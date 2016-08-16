@@ -50,6 +50,13 @@ namespace UmiAoi.Controls
                     SelectedItemHeader = item.Header;
                     MySelectedItem = item.Content;
                 }
+                else
+                {
+                    ContentControl cc = Items[SelectedIndex] as ContentControl;
+                    SelectedItemHeader = Items[SelectedIndex].ToString();
+                    if (cc != null) MySelectedItem = cc.Content;
+
+                }
             }
             else
             {
