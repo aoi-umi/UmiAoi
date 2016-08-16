@@ -7,10 +7,10 @@
         xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <UniformGrid Name="g">
+    <UniformGrid Name="g" Columns="4" Rows="4">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
 
-        <ua:MyComboBox IsEditable="False">
+        <ua:MyComboBox IsEditable="True" SelectedIndex="1">
             <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
             <ua:MyComboBoxItem Header="bb2">
                 <Button>ccc</Button></ua:MyComboBoxItem>
@@ -22,10 +22,28 @@
                 </DockPanel>
             </ua:MyComboBoxItem>
         </ua:MyComboBox>
-        <ComboBox>
-            <ua:MyComboBoxItem Header="aaasss" Content="{Binding RelativeSource={RelativeSource self}, Path=Header}">
-
+        <ua:MyComboBox Name="mcb" SelectedIndex="0">
+            <ua:MyComboBoxItem Header="aaasss">
+                <DockPanel>
+                    <Button>adssdfd</Button>
+                </DockPanel>
             </ua:MyComboBoxItem>
+            <ua:MyComboBoxItem Header="ppp">
+                sdssd
+            </ua:MyComboBoxItem>
+        </ua:MyComboBox>
+        <ComboBox>
+            <ua:MyComboBoxItem Header="assd">
+                <Button>erjiejj</Button>
+            </ua:MyComboBoxItem>
+            <ua:MyComboBoxItem Header="3244">
+                <Button>erjiejhghj</Button>
+            </ua:MyComboBoxItem>
+            <ComboBoxItem>
+                <DockPanel>
+                    <Button>aaa</Button>
+                </DockPanel>
+            </ComboBoxItem>
         </ComboBox>
     </UniformGrid>
 </Window>
