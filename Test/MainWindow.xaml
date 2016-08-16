@@ -7,8 +7,25 @@
         xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <DockPanel Name="g">
+    <UniformGrid Name="g">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
-        <ua:MyTextBox Name="mtb2"></ua:MyTextBox>
-    </DockPanel>
+
+        <ua:MyComboBox IsEditable="False">
+            <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
+            <ua:MyComboBoxItem Header="bb2">
+                <Button>ccc</Button></ua:MyComboBoxItem>
+            <ua:MyComboBoxItem Header="cccc" HorizontalContentAlignment="Stretch">
+                <DockPanel Background="AliceBlue">
+                    <Button DockPanel.Dock="Top">aaaaaaa</Button>
+                    <Button>aaaaaaa</Button>
+                    <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
+                </DockPanel>
+            </ua:MyComboBoxItem>
+        </ua:MyComboBox>
+        <ComboBox>
+            <ua:MyComboBoxItem Header="aaasss" Content="{Binding RelativeSource={RelativeSource self}, Path=Header}">
+
+            </ua:MyComboBoxItem>
+        </ComboBox>
+    </UniformGrid>
 </Window>
