@@ -9,10 +9,11 @@
         Title="MainWindow" Height="350" Width="525">
     <UniformGrid Name="g" Columns="4" Rows="2">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top">
+        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Left">
             <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
             <ua:MyComboBoxItem Header="bb2">
-                <Button>ccc</Button></ua:MyComboBoxItem>
+                <Button>ccc</Button>
+            </ua:MyComboBoxItem>
             <ua:MyComboBoxItem Header="cccc" HorizontalContentAlignment="Stretch">
                 <DockPanel Background="AliceBlue">
                     <Button DockPanel.Dock="Top">aaaaaaa</Button>
@@ -47,6 +48,12 @@
                 </DockPanel>
             </ComboBoxItem>
         </ComboBox>
-        <Button>dsd</Button>
+        <DockPanel>
+            <ua:MyComboBox DockPanel.Dock="Top">
+                <ua:MyComboBoxItem Header="sss">
+                    <ua:MyTextBox></ua:MyTextBox>
+                </ua:MyComboBoxItem>
+            </ua:MyComboBox>
+        </DockPanel>
     </UniformGrid>
 </Window>

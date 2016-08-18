@@ -110,7 +110,7 @@ namespace UmiAoi.Controls
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ComboBoxPlacementProperty =
-            DependencyProperty.Register("ComboBoxPlacement", typeof(Dock), typeof(MyComboBox), new PropertyMetadata(null));
+            DependencyProperty.Register("ComboBoxPlacement", typeof(Dock), typeof(MyComboBox), new PropertyMetadata(Dock.Left));
 
 
     }
