@@ -9,7 +9,7 @@
         Title="MainWindow" Height="350" Width="525">
     <UniformGrid Name="g" Columns="4" Rows="2">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2">
+        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top">
             <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
             <ua:MyComboBoxItem Header="bb2">
                 <Button>ccc</Button></ua:MyComboBoxItem>
