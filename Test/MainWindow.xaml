@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
-        xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"
+        xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
+        xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"   
+        xmlns:uaBeh="clr-namespace:UmiAoi.Behaviors;assembly=UmiAoi"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <UniformGrid Name="g" Columns="4">
@@ -41,6 +43,10 @@
             </ComboBox>
         </DockPanel>
 
-        <Button Click="Button_Click"></Button>
+        <Button Click="Button_Click" Content="button">
+            <ibehavior:Interaction.Behaviors>
+                <uaBeh:FocusScaleBehavior/>
+            </ibehavior:Interaction.Behaviors>
+        </Button>
     </UniformGrid>
 </Window>
