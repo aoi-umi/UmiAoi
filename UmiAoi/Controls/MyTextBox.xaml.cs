@@ -42,9 +42,6 @@ namespace UmiAoi.Controls
             }
         }
 
-
-        
-
         private void MyTextBox_PreviewDrop(object sender, DragEventArgs e)
         {
             Text = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();

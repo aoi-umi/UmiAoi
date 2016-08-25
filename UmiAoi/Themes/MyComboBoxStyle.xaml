@@ -167,7 +167,7 @@
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                 </Grid.ColumnDefinitions>
                 <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
+                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=comboboxPanel}">
                         <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
@@ -246,14 +246,22 @@
         </Setter>
     </Style>
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type local:MyComboBox}">
-        <DockPanel x:Name="templateRoot" SnapsToDevicePixels="true">
-            <Grid x:Name="comboboxPanel" DockPanel.Dock="{Binding ComboBoxPlacement, RelativeSource={RelativeSource TemplatedParent}}">
+        <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Margin="{TemplateBinding Padding}">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="RowDefinition0" Height="Auto"></RowDefinition>
+                <RowDefinition x:Name="RowDefinition1" Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="ColumnDefinition0" Width="Auto"></ColumnDefinition>
+                <ColumnDefinition x:Name="ColumnDefinition1" Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="comboboxPanel">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                 </Grid.ColumnDefinitions>
-                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
+                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="1" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=comboboxPanel}">
                         <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
@@ -272,8 +280,30 @@
                     <!--<TextBox x:Name="PART_EditableTextBox"  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
                 </Border>
             </Grid>
-            <ContentPresenter Content="{Binding MySelectedItem, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" IsHitTestVisible="True" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch"/>
-        </DockPanel>
+            <ContentPresenter x:Name="contentPanel"  Grid.Column="1" Grid.RowSpan="2" Content="{Binding MySelectedItem, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" IsHitTestVisible="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ComboBoxPlacement" Value="Top">
+                <Setter Property="Grid.Row" TargetName="contentPanel" Value="1"></Setter>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+            </Trigger>
+            <Trigger Property="ComboBoxPlacement" Value="Bottom">
+                <Setter Property="Grid.Row" TargetName="comboboxPanel" Value="1"></Setter>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+            </Trigger>
+            <Trigger Property="ComboBoxPlacement" Value="Right">
+                <Setter Property="Grid.Column" TargetName="comboboxPanel" Value="1"></Setter>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="{x:Type local:MyComboBox}">
