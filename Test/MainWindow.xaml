@@ -64,5 +64,12 @@
                 </ibehavior:Interaction.Behaviors>
             </Button>
         </UniformGrid>
+        <Canvas>
+            <Button Content="drag">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+        </Canvas>
     </UniformGrid>
 </Window>
