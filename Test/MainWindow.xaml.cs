@@ -75,7 +75,7 @@ namespace Test
             }
         }
 
-        public static void CopyStream(System.IO.Stream input, System.IO.Stream output)
+        public static void CopyStream(Stream input, Stream output)
         {
             byte[] buffer = new byte[2000];
             int len;
@@ -89,9 +89,9 @@ namespace Test
         private void compressFile(string inFile, string outFile)
         {
 
-            System.IO.FileStream outFileStream = new System.IO.FileStream(outFile, System.IO.FileMode.Create);
+            FileStream outFileStream = new FileStream(outFile, FileMode.Create);
             zlib.ZOutputStream outZStream = new zlib.ZOutputStream(outFileStream, zlib.zlibConst.Z_DEFAULT_COMPRESSION);
-            System.IO.FileStream inFileStream = new System.IO.FileStream(inFile, System.IO.FileMode.Open);
+            FileStream inFileStream = new FileStream(inFile, FileMode.Open);
             try
             {
                 CopyStream(inFileStream, outZStream);
@@ -105,9 +105,9 @@ namespace Test
         }
         private void decompressFile(string inFile, string outFile)
         {
-            System.IO.FileStream outFileStream = new System.IO.FileStream(outFile, System.IO.FileMode.Create);
+            FileStream outFileStream = new FileStream(outFile, FileMode.Create);
             zlib.ZOutputStream outZStream = new zlib.ZOutputStream(outFileStream);
-            System.IO.FileStream inFileStream = new System.IO.FileStream(inFile, System.IO.FileMode.Open);
+            FileStream inFileStream = new FileStream(inFile, FileMode.Open);
             try
             {
                 CopyStream(inFileStream, outZStream);

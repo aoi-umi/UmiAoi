@@ -42,11 +42,27 @@
                 <ComboBoxItem>aaa</ComboBoxItem>
             </ComboBox>
         </DockPanel>
-
-        <Button Click="Button_Click" Content="button">
-            <ibehavior:Interaction.Behaviors>
-                <uaBeh:FocusScaleBehavior/>
-            </ibehavior:Interaction.Behaviors>
-        </Button>
+        <UniformGrid>
+            <Button Content="Rotation">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:FocusBehavior TransformType="Rotation" From="0" To="360"/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Content="Scale">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:FocusBehavior TransformType="Scale" From="1" To="1.5"/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Content="Skew">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:FocusBehavior TransformType="Skew" From="0" To="10"/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Content="Translate">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:FocusBehavior TransformType="Translate" From="0" To="10"/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+        </UniformGrid>
     </UniformGrid>
 </Window>

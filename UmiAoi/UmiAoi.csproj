@@ -58,7 +58,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\FocusScaleBehavior.cs" />
+    <Compile Include="Behaviors\FocusBehavior.cs" />
     <Compile Include="Controls\MyComboBoxItem.xaml.cs">
       <DependentUpon>MyComboBoxItem.xaml</DependentUpon>
     </Compile>
