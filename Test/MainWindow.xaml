@@ -8,7 +8,7 @@
         xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"   
         xmlns:uaBeh="clr-namespace:UmiAoi.Behaviors;assembly=UmiAoi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <UniformGrid Name="g" Columns="4">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
         <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top">
@@ -65,7 +65,22 @@
             </Button>
         </UniformGrid>
         <Canvas>
-            <Button Content="drag">
+            <Button Name="b1" Content="drag" Click="Button_Click_1">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Name="b2" Canvas.Left="50" Content="drag">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Name="b3" Canvas.Top="50" Content="drag">
+                <ibehavior:Interaction.Behaviors>
+                    <uaBeh:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+            </Button>
+            <Button Name="b4" Canvas.Top="50" Canvas.Left="50" Content="drag">
                 <ibehavior:Interaction.Behaviors>
                     <uaBeh:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>

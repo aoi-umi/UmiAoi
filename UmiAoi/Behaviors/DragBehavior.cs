@@ -18,9 +18,9 @@ namespace UmiAoi.Behaviors
         {
             base.OnAttached();
             element = AssociatedObject as FrameworkElement;
-            AssociatedObject.MouseMove += AssociatedObject_MouseMove;
-            AssociatedObject.PreviewMouseDown += AssociatedObject_MouseLeftButtonDown;
-            AssociatedObject.PreviewMouseUp += AssociatedObject_MouseLeftButtonUp;
+            AssociatedObject.PreviewMouseMove += AssociatedObject_MouseMove;
+            AssociatedObject.PreviewMouseLeftButtonDown += AssociatedObject_MouseLeftButtonDown;
+            AssociatedObject.PreviewMouseLeftButtonUp += AssociatedObject_MouseLeftButtonUp;            
         }
 
         private void AssociatedObject_MouseMove(object sender, MouseEventArgs e)
@@ -35,20 +35,18 @@ namespace UmiAoi.Behaviors
                 if (double.IsNaN(left)) left = 0;
                 if (double.IsNaN(top)) top = 0;
                 element.SetValue(Canvas.LeftProperty, left + pos.X);
-                element.SetValue(Canvas.TopProperty, top + pos.Y);                
+                element.SetValue(Canvas.TopProperty, top + pos.Y);
             }
         }
 
         private void AssociatedObject_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             isDraging = false;
-            e.Handled = true;
         }
 
         private void AssociatedObject_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             isDraging = true;
-            e.Handled = true;
         }
 
         protected override void OnDetaching()

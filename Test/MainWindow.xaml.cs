@@ -27,6 +27,19 @@ namespace Test
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AdornerLayer al1 = AdornerLayer.GetAdornerLayer(b1);
+            al1.Add(new UmiAoi.Adorner.ReflectorAdorner(b1, Dock.Top));
+
+            AdornerLayer al2 = AdornerLayer.GetAdornerLayer(b2);
+            al2.Add(new UmiAoi.Adorner.ReflectorAdorner(b2, Dock.Bottom));
+            AdornerLayer al3 = AdornerLayer.GetAdornerLayer(b3);
+            al3.Add(new UmiAoi.Adorner.ReflectorAdorner(b3, Dock.Left));
+            AdornerLayer al4 = AdornerLayer.GetAdornerLayer(b4);
+            al4.Add(new UmiAoi.Adorner.ReflectorAdorner(b4, Dock.Right));
+        }
+
         private void mtb_PreviewDrop(object sender, DragEventArgs e)
         {
             UmiAoi.Controls.MyTextBox m = mtb;
@@ -118,6 +131,11 @@ namespace Test
                 outFileStream.Close();
                 inFileStream.Close();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("hello");
         }
     }
 }

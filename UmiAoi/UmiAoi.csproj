@@ -58,6 +58,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adorner\ReflectorAdorner.cs" />
     <Compile Include="Behaviors\FocusBehavior.cs" />
     <Compile Include="Behaviors\DragBehavior.cs" />
     <Compile Include="Controls\MyComboBoxItem.xaml.cs">
