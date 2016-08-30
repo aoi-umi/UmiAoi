@@ -21,46 +21,43 @@ namespace UmiAoi.Adorner
         //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         //public static readonly DependencyProperty DockTypeProperty =
         //    DependencyProperty.Register(nameof(DockType), typeof(Dock), typeof(ReflectorAdorner), new PropertyMetadata(Dock.Bottom));
-
+        private Dock dockType;
         private Rectangle rec;
         private VisualCollection VisualChildren;
         private UIElement element;
         public ReflectorAdorner(UIElement adornedElement, Dock DockType) : base(adornedElement)
         {
             element = adornedElement;
+            dockType = DockType;
             rec = new Rectangle();
             VisualChildren = new VisualCollection(this);
-            AddReflection(adornedElement, DockType);
+            AddReflection(adornedElement);
         }
 
-        private void AddReflection(UIElement element, Dock DockType)
+        private void AddReflection(UIElement element)
         {
             VisualBrush brush = new VisualBrush(element) { Stretch = Stretch.Fill};
             LinearGradientBrush linerBrush = new LinearGradientBrush();
-            switch (DockType)
+            switch (dockType)
             {
                 case Dock.Left:
                     linerBrush.StartPoint = new Point(0, 0.5);
-                    linerBrush.EndPoint = new Point(1, 0.5);
-                    rec.Margin = new Thickness(0, 1, 0, 0);                    
+                    linerBrush.EndPoint = new Point(1, 0.5);               
                     rec.RenderTransform = new ScaleTransform() { ScaleX = -1, ScaleY = 1 };
                     break;
                 case Dock.Right:
                     linerBrush.StartPoint = new Point(1, 0.5);
                     linerBrush.EndPoint = new Point(0, 0.5);
-                    rec.Margin = new Thickness(0, 1, 0, 0);
                     rec.RenderTransform = new ScaleTransform() { ScaleX = -1, ScaleY = 1 };
                     break;
                 case Dock.Top:
                     linerBrush.StartPoint = new Point(0.5, 0);
                     linerBrush.EndPoint = new Point(0.5, 1);
-                    rec.Margin = new Thickness(0, 0, 0, 1);
                     rec.RenderTransform = new ScaleTransform() { ScaleX = 1, ScaleY = -1 };
                     break;
                 case Dock.Bottom:
                     linerBrush.StartPoint = new Point(0.5, 1);
                     linerBrush.EndPoint = new Point(0.5, 0);
-                    rec.Margin = new Thickness(0, 1, 0, 0);
                     rec.RenderTransform = new ScaleTransform() { ScaleX = 1, ScaleY = -1 };
                     break;
             }
@@ -96,7 +93,22 @@ namespace UmiAoi.Adorner
         {
             rec.Width = DesiredSize.Width;
             rec.Height = DesiredSize.Height;
-            rec.Arrange(new Rect(0, DesiredSize.Height, DesiredSize.Width, DesiredSize.Height));
+            double margin = 1;
+            switch (dockType)
+            {
+                case Dock.Top:
+                    rec.Arrange(new Rect(0, -DesiredSize.Height - margin, DesiredSize.Width, DesiredSize.Height));
+                    break;
+                case Dock.Bottom:
+                    rec.Arrange(new Rect(0, DesiredSize.Height + margin, DesiredSize.Width, DesiredSize.Height));
+                    break;
+                case Dock.Left:
+                    rec.Arrange(new Rect(-DesiredSize.Width - margin, 0, DesiredSize.Width, DesiredSize.Height));
+                    break;
+                case Dock.Right:
+                    rec.Arrange(new Rect(DesiredSize.Width + margin, 0, DesiredSize.Width, DesiredSize.Height));
+                    break;
+            }
             return base.ArrangeOverride(finalSize);
         }
 

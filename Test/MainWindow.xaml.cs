@@ -31,7 +31,6 @@ namespace Test
         {
             AdornerLayer al1 = AdornerLayer.GetAdornerLayer(b1);
             al1.Add(new UmiAoi.Adorner.ReflectorAdorner(b1, Dock.Top));
-
             AdornerLayer al2 = AdornerLayer.GetAdornerLayer(b2);
             al2.Add(new UmiAoi.Adorner.ReflectorAdorner(b2, Dock.Bottom));
             AdornerLayer al3 = AdornerLayer.GetAdornerLayer(b3);
