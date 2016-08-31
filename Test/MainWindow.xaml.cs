@@ -27,16 +27,18 @@ namespace Test
             InitializeComponent();
         }
 
+        UmiAoi.Adorners.ReflectorAdorner ra1;
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        {            
             AdornerLayer al1 = AdornerLayer.GetAdornerLayer(b1);
-            al1.Add(new UmiAoi.Adorner.ReflectorAdorner(b1, Dock.Top));
+            ra1 = new UmiAoi.Adorners.ReflectorAdorner(b1, Dock.Top);
+            al1.Add(ra1);
             AdornerLayer al2 = AdornerLayer.GetAdornerLayer(b2);
-            al2.Add(new UmiAoi.Adorner.ReflectorAdorner(b2, Dock.Bottom));
+            al2.Add(new UmiAoi.Adorners.ReflectorAdorner(b2, Dock.Bottom));
             AdornerLayer al3 = AdornerLayer.GetAdornerLayer(b3);
-            al3.Add(new UmiAoi.Adorner.ReflectorAdorner(b3, Dock.Left));
+            al3.Add(new UmiAoi.Adorners.ReflectorAdorner(b3, Dock.Left));
             AdornerLayer al4 = AdornerLayer.GetAdornerLayer(b4);
-            al4.Add(new UmiAoi.Adorner.ReflectorAdorner(b4, Dock.Right));
+            al4.Add(new UmiAoi.Adorners.ReflectorAdorner(b4, Dock.Right));
         }
 
         private void mtb_PreviewDrop(object sender, DragEventArgs e)
@@ -60,7 +62,6 @@ namespace Test
             }
             try
             {
-
                 compressFile(filename, filename + ".bin");
                 //decompressFile(filename, filename + "de");
                 return;
@@ -134,7 +135,7 @@ namespace Test
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hello");
+            ra1.ShowOrHideReflector();
         }
     }
 }

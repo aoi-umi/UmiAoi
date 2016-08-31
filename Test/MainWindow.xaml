@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
-        xmlns:ua="clr-namespace:UmiAoi.Controls;assembly=UmiAoi"   
-        xmlns:uaBeh="clr-namespace:UmiAoi.Behaviors;assembly=UmiAoi"
+        xmlns:ua="http://schemas.UmiAoi.com"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary Source="/Themes/Generic.xaml"/>
+    </Window.Resources>
     <UniformGrid Name="g" Columns="4">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
         <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top">
@@ -45,44 +47,52 @@
         <UniformGrid>
             <Button Content="Rotation">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:FocusBehavior TransformType="Rotation" From="0" To="360"/>
+                    <ua:FocusBehavior TransformType="Rotation" From="0" To="360"/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
             <Button Content="Scale">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:FocusBehavior TransformType="Scale" From="1" To="1.5"/>
+                    <ua:FocusBehavior TransformType="Scale" From="1" To="1.5"/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
             <Button Content="Skew">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:FocusBehavior TransformType="Skew" From="0" To="10"/>
+                    <ua:FocusBehavior TransformType="Skew" From="0" To="10"/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
             <Button Content="Translate">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:FocusBehavior TransformType="Translate" From="0" To="10"/>
+                    <ua:FocusBehavior TransformType="Translate" From="0" To="10"/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
         </UniformGrid>
         <Canvas>
+            
             <Button Name="b1" Canvas.Left="30" Canvas.Top="30" Content="drag" Click="Button_Click_1">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:DragBehavior/>
+                    <ua:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
             <Button Name="b2" Canvas.Left="66" Content="drag" Canvas.Top="10">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:DragBehavior/>
+                    <ua:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
             <Button Name="b3" Canvas.Top="53" Canvas.Left="30" Content="drag">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:DragBehavior/>
+                    <ua:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
-            <Button Name="b4" Canvas.Top="53" Canvas.Left="66" Content="drag">
+            <ua:SimpleDecorator Canvas.Top="53" Canvas.Left="66">
                 <ibehavior:Interaction.Behaviors>
-                    <uaBeh:DragBehavior/>
+                    <ua:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+                <Button Name="b4" Content="drag">
+                </Button>
+            </ua:SimpleDecorator>
+            <Button Content="eliiiiiiiiiii" Width="80" Height="80" Style="{StaticResource EllipseButtonStyle}" Canvas.Top="80">
+                <ibehavior:Interaction.Behaviors>
+                    <ua:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>
             </Button>
         </Canvas>

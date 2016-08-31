@@ -58,7 +58,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adorner\ReflectorAdorner.cs" />
+    <Compile Include="Adorners\ReflectorAdorner.cs" />
+    <Compile Include="Adorners\SimpleDecorator.cs" />
     <Compile Include="Behaviors\FocusBehavior.cs" />
     <Compile Include="Behaviors\DragBehavior.cs" />
     <Compile Include="Controls\MyComboBoxItem.xaml.cs">
@@ -97,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MyTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\EllipseButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

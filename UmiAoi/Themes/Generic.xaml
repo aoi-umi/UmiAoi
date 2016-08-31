@@ -6,5 +6,6 @@
     xmlns:local="clr-namespace:UmiAoi.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/UmiAoi;component/Themes/MyComboBoxStyle.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/UmiAoi;component/Themes/EllipseButtonStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

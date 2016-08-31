@@ -1,31 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace UmiAoi.Adorner
+namespace UmiAoi.Adorners
 {
-    public class ReflectorAdorner : System.Windows.Documents.Adorner
+    public class ReflectorAdorner : Adorner
     {
-        //public Dock DockType
-        //{
-        //    get { return (Dock)GetValue(DockTypeProperty); }
-        //    set { SetValue(DockTypeProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty DockTypeProperty =
-        //    DependencyProperty.Register(nameof(DockType), typeof(Dock), typeof(ReflectorAdorner), new PropertyMetadata(Dock.Bottom));
         private Dock dockType;
         private Rectangle rec;
         private VisualCollection VisualChildren;
         private UIElement element;
+
+        public ReflectorAdorner(UIElement adornedElement) : base(adornedElement)
+        {
+            Init(adornedElement, Dock.Bottom);
+        }
+
         public ReflectorAdorner(UIElement adornedElement, Dock DockType) : base(adornedElement)
+        {
+            Init(adornedElement, DockType);
+        }
+
+        private void Init(UIElement adornedElement, Dock DockType)
         {
             element = adornedElement;
             dockType = DockType;
@@ -69,27 +67,28 @@ namespace UmiAoi.Adorner
             VisualChildren.Add(rec);
         }
 
-        public void HideReflector()
+        public void ShowOrHideReflector()
         {
-            rec.Visibility = Visibility.Hidden;
-        }
-
-        public void ShowReflector()
-        {
-            rec.Visibility = Visibility.Visible;
+            rec.Visibility = rec.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
         }
 
         protected override int VisualChildrenCount
         {
-            get { return 1; }
+            get { return VisualChildren.Count; }
         }
 
         protected override Visual GetVisualChild(int index)
         {
-            return rec;
+            return VisualChildren[index];
         }
 
-        protected override Size ArrangeOverride(Size finalSize)
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            SetReflector();
+        }
+
+        private void SetReflector()
         {
             rec.Width = DesiredSize.Width;
             rec.Height = DesiredSize.Height;
@@ -109,13 +108,6 @@ namespace UmiAoi.Adorner
                     rec.Arrange(new Rect(DesiredSize.Width + margin, 0, DesiredSize.Width, DesiredSize.Height));
                     break;
             }
-            return base.ArrangeOverride(finalSize);
         }
-
-        //protected override void OnRender(DrawingContext drawingContext)
-        //{
-        //    //base.OnRender(drawingContext);
-        //    drawingContext.DrawEllipse(Brushes.Red, new Pen(Brushes.Green, .5), new Point(element.RenderSize.Width, element.RenderSize.Height), 5, 5);
-        //}
     }    
 }
