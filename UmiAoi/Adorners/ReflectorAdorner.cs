@@ -34,13 +34,13 @@ namespace UmiAoi.Adorners
 
         private void AddReflection(UIElement element)
         {
-            VisualBrush brush = new VisualBrush(element) { Stretch = Stretch.Fill};
+            VisualBrush brush = new VisualBrush(element) { Stretch = Stretch.Fill };
             LinearGradientBrush linerBrush = new LinearGradientBrush();
             switch (dockType)
             {
                 case Dock.Left:
                     linerBrush.StartPoint = new Point(0, 0.5);
-                    linerBrush.EndPoint = new Point(1, 0.5);               
+                    linerBrush.EndPoint = new Point(1, 0.5);
                     rec.RenderTransform = new ScaleTransform() { ScaleX = -1, ScaleY = 1 };
                     break;
                 case Dock.Right:
@@ -59,9 +59,9 @@ namespace UmiAoi.Adorners
                     rec.RenderTransform = new ScaleTransform() { ScaleX = 1, ScaleY = -1 };
                     break;
             }
-            rec.Fill = brush;
             linerBrush.GradientStops.Add(new GradientStop() { Color = Colors.Black, Offset = 0.124 });
             linerBrush.GradientStops.Add(new GradientStop() { Color = Colors.Transparent, Offset = 1 });
+            rec.Fill = brush;
             rec.OpacityMask = linerBrush;
             rec.RenderTransformOrigin = new Point(.5, .5);
             VisualChildren.Add(rec);
@@ -96,18 +96,18 @@ namespace UmiAoi.Adorners
             switch (dockType)
             {
                 case Dock.Top:
-                    rec.Arrange(new Rect(0, -DesiredSize.Height - margin, DesiredSize.Width, DesiredSize.Height));
+                    rec.Arrange(new Rect(0, -(DesiredSize.Height + margin), DesiredSize.Width, DesiredSize.Height));
                     break;
                 case Dock.Bottom:
                     rec.Arrange(new Rect(0, DesiredSize.Height + margin, DesiredSize.Width, DesiredSize.Height));
                     break;
                 case Dock.Left:
-                    rec.Arrange(new Rect(-DesiredSize.Width - margin, 0, DesiredSize.Width, DesiredSize.Height));
+                    rec.Arrange(new Rect(-(DesiredSize.Width + margin), 0, DesiredSize.Width, DesiredSize.Height));
                     break;
                 case Dock.Right:
                     rec.Arrange(new Rect(DesiredSize.Width + margin, 0, DesiredSize.Width, DesiredSize.Height));
                     break;
             }
         }
-    }    
+    }
 }

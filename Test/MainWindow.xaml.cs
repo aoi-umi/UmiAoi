@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace Test
         public MainWindow()
         {
             InitializeComponent();
+            string format = "yyMMddmmHHss";
+            var x = DateTime.ParseExact("160831151801", format, CultureInfo.InvariantCulture);
+            var y = x.ToString(format+"ddd%c");
         }
 
         UmiAoi.Adorners.ReflectorAdorner ra1;

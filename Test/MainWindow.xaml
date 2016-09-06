@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <Window.Resources>
-        <ResourceDictionary Source="/Themes/Generic.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/UmiAoi;component/Themes/Generic.xaml"/>
     </Window.Resources>
     <UniformGrid Name="g" Columns="4">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
@@ -96,5 +96,99 @@
                 </ibehavior:Interaction.Behaviors>
             </Button>
         </Canvas>
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="4 3 2" LookDirection="-4 -3 -2" />
+            </Viewport3D.Camera>
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <DirectionalLight Direction="-1,-1,-1" />
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <Model3DGroup>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 0  1 0 0  1 1 0  0 1 0"
+                                        TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Red"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 0  0 0 1  1 0 1  1 0 0"
+                                            TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Yellow"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 1 1  0 0 1  1 0 1  1 1 1"
+                                            TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Green"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 1 1  1 1 1  1 1 0  0 1 0"
+                                            TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Blue"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 1 1  0 0 1  0 0 0  0 1 0"
+                                            TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Orange"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="1 1 1  1 0 1  1 0 0  1 1 0"
+                                            TriangleIndices="0 1 2  0 2 3" />
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <SolidColorBrush Color="Purple"/>
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
     </UniformGrid>
 </Window>
