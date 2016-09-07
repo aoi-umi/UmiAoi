@@ -69,6 +69,7 @@
       <DependentUpon>MyTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MyComboBox.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
