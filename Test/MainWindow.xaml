@@ -13,7 +13,7 @@
     </Window.Resources>
     <UniformGrid Name="g" Columns="4">
         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top">
+        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
             <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
             <ua:MyComboBoxItem Header="bb2">
                 <Button>ccc</Button>
@@ -26,7 +26,7 @@
                 </DockPanel>
             </ua:MyComboBoxItem>
         </ua:MyComboBox>
-        <ua:MyComboBox Name="mcb" ComboBoxPlacement="Left" SelectedIndex="0">
+        <ua:MyComboBox Name="mcb" SelectedIndex="0" VerticalContentAlignment="Stretch" ComboBoxPlacement="Top">
             <ua:MyComboBoxItem Header="aaasss">
                 <DockPanel>
                     <Button>adssdfd</Button>

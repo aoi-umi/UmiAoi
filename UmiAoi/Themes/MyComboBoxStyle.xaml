@@ -154,14 +154,14 @@
     <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type local:MyComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.RowDefinitions>
-                <RowDefinition x:Name="RowDefinition0" Height="Auto"></RowDefinition>
-                <RowDefinition x:Name="RowDefinition1" Height="*"></RowDefinition>
+                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                <RowDefinition x:Name="RowDefinition1" Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="ColumnDefinition0" Width="Auto"></ColumnDefinition>
-                <ColumnDefinition x:Name="ColumnDefinition1" Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="ColumnDefinition0" Width="Auto"/>
+                <ColumnDefinition x:Name="ColumnDefinition1" Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="comboboxPanel">
+            <Grid x:Name="comboboxPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
@@ -181,8 +181,7 @@
                     </Themes:SystemDropShadowChrome>
                 </Popup>
                 <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
-                <!--<ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
-                <ContentPresenter x:Name="contentPresenter" Content="{Binding SelectedItemHeader, RelativeSource={RelativeSource TemplatedParent}}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="False" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                <ContentPresenter x:Name="contentPresenter" Content="{Binding SelectedItemHeader, RelativeSource={RelativeSource TemplatedParent}}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" IsHitTestVisible="False" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
             </Grid>
             <ContentPresenter x:Name="contentPanel" Grid.Column="1" Grid.RowSpan="2" Content="{Binding MySelectedItem, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" IsHitTestVisible="True" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch"/>
         </Grid>
@@ -206,22 +205,26 @@
                 <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
             </Trigger>
             <Trigger Property="ComboBoxPlacement" Value="Top">
-                <Setter Property="Grid.Row" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
-                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+                <Setter Property="Grid.Row" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.RowSpan" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="comboboxPanel" Value="2"/>
             </Trigger>
             <Trigger Property="ComboBoxPlacement" Value="Bottom">
-                <Setter Property="Grid.Row" TargetName="comboboxPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Grid.Row" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
                 <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                 <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
-                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.RowSpan" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="comboboxPanel" Value="2"/>
             </Trigger>
             <Trigger Property="ComboBoxPlacement" Value="Right">
-                <Setter Property="Grid.Column" TargetName="comboboxPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Grid.Column" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
                 <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
                 <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
             </Trigger>
@@ -248,14 +251,14 @@
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type local:MyComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Margin="{TemplateBinding Padding}">
             <Grid.RowDefinitions>
-                <RowDefinition x:Name="RowDefinition0" Height="Auto"></RowDefinition>
-                <RowDefinition x:Name="RowDefinition1" Height="*"></RowDefinition>
+                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                <RowDefinition x:Name="RowDefinition1" Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="ColumnDefinition0" Width="Auto"></ColumnDefinition>
-                <ColumnDefinition x:Name="ColumnDefinition1" Width="*"></ColumnDefinition>
+                <ColumnDefinition x:Name="ColumnDefinition0" Width="Auto"/>
+                <ColumnDefinition x:Name="ColumnDefinition1" Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid x:Name="comboboxPanel">
+            <Grid x:Name="comboboxPanel" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
@@ -276,30 +279,33 @@
                 </Popup>
                 <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
                 <Border x:Name="border" Background="{StaticResource TextBox.Static.Background}" Margin="{TemplateBinding BorderThickness}">
-                    <TextBox Text="{Binding SelectedItemHeader, RelativeSource={RelativeSource TemplatedParent}}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    <!--<TextBox x:Name="PART_EditableTextBox"  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
+                    <TextBox Text="{Binding SelectedItemHeader, RelativeSource={RelativeSource TemplatedParent}}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}"/>
                 </Border>
             </Grid>
             <ContentPresenter x:Name="contentPanel"  Grid.Column="1" Grid.RowSpan="2" Content="{Binding MySelectedItem, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" IsHitTestVisible="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="ComboBoxPlacement" Value="Top">
-                <Setter Property="Grid.Row" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
-                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+                <Setter Property="Grid.Row" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.RowSpan" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="comboboxPanel" Value="2"/>
             </Trigger>
             <Trigger Property="ComboBoxPlacement" Value="Bottom">
-                <Setter Property="Grid.Row" TargetName="comboboxPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Grid.Row" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
                 <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                 <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
-                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"></Setter>
-                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"></Setter>
+                <Setter Property="Grid.RowSpan" TargetName="contentPanel" Value="1"/>
+                <Setter Property="Grid.RowSpan" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="contentPanel" Value="2"/>
+                <Setter Property="Grid.ColumnSpan" TargetName="comboboxPanel" Value="2"/>
             </Trigger>
             <Trigger Property="ComboBoxPlacement" Value="Right">
-                <Setter Property="Grid.Column" TargetName="comboboxPanel" Value="1"></Setter>
-                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"></Setter>
+                <Setter Property="Grid.Column" TargetName="comboboxPanel" Value="1"/>
+                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
                 <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
                 <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
             </Trigger>

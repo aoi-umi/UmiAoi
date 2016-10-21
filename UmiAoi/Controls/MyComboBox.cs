@@ -55,7 +55,7 @@ namespace UmiAoi.Controls
             base.OnSelectionChanged(e);
             Update();
         }
-        
+
         private void Update()
         {
             if (SelectedIndex >= 0 && SelectedIndex < Items.Count)
@@ -90,7 +90,7 @@ namespace UmiAoi.Controls
 
         // Using a DependencyProperty as the backing store for SelectionBoxItemHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedItemHeaderProperty =
-            DependencyProperty.Register("SelectedItemHeader", typeof(string), typeof(MyComboBox), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register(nameof(SelectedItemHeader), typeof(string), typeof(MyComboBox), new PropertyMetadata(string.Empty));
 
         public Object MySelectedItem
         {
@@ -100,7 +100,7 @@ namespace UmiAoi.Controls
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MySelectedItemProperty =
-            DependencyProperty.Register("MySelectedItem", typeof(Object), typeof(MyComboBox), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(MySelectedItem), typeof(Object), typeof(MyComboBox), new PropertyMetadata(null));
 
         public Dock ComboBoxPlacement
         {
@@ -110,8 +110,26 @@ namespace UmiAoi.Controls
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ComboBoxPlacementProperty =
-            DependencyProperty.Register("ComboBoxPlacement", typeof(Dock), typeof(MyComboBox), new PropertyMetadata(Dock.Left));
+            DependencyProperty.Register(nameof(ComboBoxPlacement), typeof(Dock), typeof(MyComboBox), new PropertyMetadata(Dock.Left));
 
+        //public HorizontalAlignment ComboBoxHorizontalAlignment
+        //{
+        //    get { return (HorizontalAlignment)GetValue(ComboBoxHorizontalAlignmentProperty); }
+        //    set { SetValue(ComboBoxHorizontalAlignmentProperty, value); }
+        //}
 
+        //// Using a DependencyProperty as the backing store for ComBoxHorizontalAlignment.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ComboBoxHorizontalAlignmentProperty =
+        //    DependencyProperty.Register(nameof(ComboBoxHorizontalAlignment), typeof(HorizontalAlignment), typeof(MyComboBox), new PropertyMetadata(HorizontalAlignment.Left));
+
+        //public VerticalAlignment ComboBoxVerticalAlignment
+        //{
+        //    get { return (VerticalAlignment)GetValue(ComboBoxVerticalAlignmentProperty); }
+        //    set { SetValue(ComboBoxVerticalAlignmentProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ComboBoxVerticalAlignmentProperty =
+        //    DependencyProperty.Register(nameof(ComboBoxVerticalAlignment), typeof(VerticalAlignment), typeof(MyComboBox), new PropertyMetadata(VerticalAlignment.Top));
     }
 }

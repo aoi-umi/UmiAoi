@@ -65,25 +65,7 @@ namespace Test
                 return;
             }
             try
-            {
-                compressFile(filename, filename + ".bin");
-                //decompressFile(filename, filename + "de");
-                return;
-                using (FileStream fs = new FileStream(filename, FileMode.Open))
-                {
-                    using (FileStream destStream = new FileStream(filename + ".bin", FileMode.Create))
-                    {
-                        using (DeflateStream ds = new DeflateStream(destStream, CompressionMode.Decompress, true))
-                        {
-                            byte[] buffer = new byte[10240];
-                            int readBytes = 0;
-                            while ((readBytes = fs.Read(buffer, 0, buffer.Length)) != 0)
-                            {
-                                ds.Write(buffer, 0, readBytes);
-                            }
-                        }
-                    }
-                }
+            {                
             }
             catch (Exception ex)
             {
