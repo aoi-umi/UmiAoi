@@ -7,59 +7,76 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         xmlns:ua="http://schemas.UmiAoi.com">
-    <UniformGrid>
-        <!-- 通过ComboBoxPlacement,HorizontalContentAlignment,VerticalContentAlignment改变ComboBox的位置,显示方式,改变SelectedIndex来改变显示内容-->
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
-            <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="bb2">
-                <Button>ccc</Button>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
-                <DockPanel Background="AliceBlue">
-                    <Button DockPanel.Dock="Top">aaaaaaa</Button>
-                    <Button>aaaaaaa</Button>
-                    <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-        <ua:MyComboBox SelectedIndex="0" HorizontalContentAlignment="Center" ComboBoxPlacement="Bottom">
-            <ua:MyComboBoxItem Header="aaasss">
+    <TabControl>
+        <TabItem Header="MiniWindow">
+            <UniformGrid Name="uniform" Rows="2" Columns="2">
+                <ua:MiniWindow Name="miniWindow" BorderBrush="Black" BorderThickness="5" Height="120" Width="200">
+                    <DockPanel>
+                        <Button Content="button1" Click="Button_Click"/>
+                        <Button Content="button2" Click="Button_Click"/>
+                    </DockPanel>
+                </ua:MiniWindow>
                 <DockPanel>
-                    <Button>adssdfd</Button>
                 </DockPanel>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="ppp">
-                <DockPanel>
-                    <Button>dfafj</Button>
-                    <Button>dfafj</Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
-            <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="bb2">
-                <Button>ccc</Button>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
-                <DockPanel Background="AliceBlue">
-                    <Button DockPanel.Dock="Top">aaaaaaa</Button>
-                    <Button>aaaaaaa</Button>
-                    <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-        <ua:MyComboBox SelectedIndex="0" VerticalContentAlignment="Stretch" ComboBoxPlacement="Right">
-            <ua:MyComboBoxItem Header="aaasss">
-                <DockPanel>
-                    <Button>adssdfd</Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="ppp">
-                <DockPanel>
-                    <Button>dfafj</Button>
-                    <Button>dfafj</Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-    </UniformGrid>
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="CustomComboBox">
+            <UniformGrid>
+                <!-- 通过ComboBoxPlacement,HorizontalContentAlignment,VerticalContentAlignment改变ComboBox的位置,显示方式,改变SelectedIndex来改变显示内容-->
+                <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
+                    <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="bb2">
+                        <Button>ccc</Button>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
+                        <DockPanel Background="AliceBlue">
+                            <Button DockPanel.Dock="Top">aaaaaaa</Button>
+                            <Button>aaaaaaa</Button>
+                            <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
+                <ua:MyComboBox SelectedIndex="0" HorizontalContentAlignment="Center" ComboBoxPlacement="Bottom">
+                    <ua:MyComboBoxItem Header="aaasss">
+                        <DockPanel>
+                            <Button>adssdfd</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="ppp">
+                        <DockPanel>
+                            <Button>dfafj</Button>
+                            <Button>dfafj</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
+                <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
+                    <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="bb2">
+                        <Button>ccc</Button>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
+                        <DockPanel Background="AliceBlue">
+                            <Button DockPanel.Dock="Top">aaaaaaa</Button>
+                            <Button>aaaaaaa</Button>
+                            <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
+                <ua:MyComboBox SelectedIndex="0" VerticalContentAlignment="Stretch" ComboBoxPlacement="Right">
+                    <ua:MyComboBoxItem Header="aaasss">
+                        <DockPanel>
+                            <Button>adssdfd</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="ppp">
+                        <DockPanel>
+                            <Button>dfafj</Button>
+                            <Button>dfafj</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
+            </UniformGrid>
+        </TabItem>
+    </TabControl>
+    
 </Window>

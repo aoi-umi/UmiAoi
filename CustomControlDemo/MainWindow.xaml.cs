@@ -23,6 +23,22 @@ namespace CustomControlDemo
         public MainWindow()
         {
             InitializeComponent();
+            miniWindow.CloseClicked += miniWindow_CloseClicked;
+        }
+
+        private void miniWindow_CloseClicked(object sender, RoutedEventArgs e)
+        {
+            var element = sender as UIElement;
+            uniform.Children.Remove(element);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var element = sender as ContentControl;
+            string message = "content is ";
+            if (element != null)
+                message += element.Content;
+            MessageBox.Show(message);
         }
     }
 }

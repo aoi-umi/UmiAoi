@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                    
+                    xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
+                    xmlns:local="clr-namespace:UmiAoi.Controls"
+                    xmlns:uabehavior="clr-namespace:UmiAoi.Behaviors">
+    <ControlTemplate x:Key="MiniWindowStyle" TargetType="{x:Type local:MiniWindow}">
+        <Canvas>
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                    Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}">
+                <ibehavior:Interaction.Behaviors>
+                    <uabehavior:DragBehavior/>
+                </ibehavior:Interaction.Behaviors>
+                <Grid x:Name="grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.ColumnSpan="3" Fill="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+                        <Button x:Name="minimizeButton" Grid.Column="1" Content="-" ToolTip="Minimize" Width="40"/>
+                        <Button x:Name="maxmizeButton" Grid.Column="1" Content="o" ToolTip="Maxmize" Width="40" Visibility="Collapsed"/>
+                        <Button x:Name="closeButton" Grid.Column="2" Content="x" ToolTip="Close" Width="40"/>
+                    </Grid>
+                    <ContentPresenter x:Name="contentPresenter" Grid.Row="1"/>
+                </Grid>
+            </Border>
+        </Canvas>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMinimized" Value="true">
+                <Setter Property="Visibility" Value="Collapsed" TargetName="contentPresenter"/>
+                <Setter Property="Visibility" Value="Collapsed" TargetName="minimizeButton"/>
+                <Setter Property="Visibility" Value="Visible" TargetName="maxmizeButton"/>
+                <Setter Property="Width" Value="100" TargetName="border"/>
+                <Setter Property="Height" Value="40" TargetName="border"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type local:MiniWindow}">
+        <Setter Property="Template" Value="{StaticResource MiniWindowStyle}"/>
+    </Style>
+</ResourceDictionary>

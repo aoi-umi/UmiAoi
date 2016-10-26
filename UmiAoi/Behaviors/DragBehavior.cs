@@ -12,24 +12,41 @@ namespace UmiAoi.Behaviors
 {
     public class DragBehavior: Behavior<FrameworkElement>  
     {
+        public bool IsKeptMovePointCenter
+        {
+            get { return (bool)GetValue(IsKeptMovePointCenterProperty); }
+            set { SetValue(IsKeptMovePointCenterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsKeptMovePointCenter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsKeptMovePointCenterProperty =
+            DependencyProperty.Register(nameof(IsKeptMovePointCenter), typeof(bool), typeof(DragBehavior), new PropertyMetadata(false));
+
         private FrameworkElement element { get; set; }
-        private bool isDraging = false;
         protected override void OnAttached()
         {
             base.OnAttached();
-            element = AssociatedObject as FrameworkElement;
-            AssociatedObject.PreviewMouseMove += AssociatedObject_MouseMove;
-            AssociatedObject.PreviewMouseLeftButtonDown += AssociatedObject_MouseLeftButtonDown;
-            AssociatedObject.PreviewMouseLeftButtonUp += AssociatedObject_MouseLeftButtonUp;            
+            element = AssociatedObject;
+            element.PreviewMouseMove += AssociatedObject_MouseMove;   
         }
 
+        Point PressedPoint { get; set; }
         private void AssociatedObject_MouseMove(object sender, MouseEventArgs e)
         {
             var pos = e.GetPosition((FrameworkElement)sender);
-            if (isDraging)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
-                pos.X -= element.ActualWidth / 2;
-                pos.Y -= element.ActualHeight / 2;
+                if (PressedPoint == new Point(0, 0)) PressedPoint = e.GetPosition((FrameworkElement)sender);
+                if (IsKeptMovePointCenter)
+                {
+                    pos.X -= element.ActualWidth / 2;
+                    pos.Y -= element.ActualHeight / 2;
+                }
+                else
+                {
+                    pos.X -= PressedPoint.X;
+                    pos.Y -= PressedPoint.Y;
+                }
                 var left = (double)element.GetValue(Canvas.LeftProperty);
                 var top = (double)element.GetValue(Canvas.TopProperty);
                 if (double.IsNaN(left)) left = 0;
@@ -37,24 +54,16 @@ namespace UmiAoi.Behaviors
                 element.SetValue(Canvas.LeftProperty, left + pos.X);
                 element.SetValue(Canvas.TopProperty, top + pos.Y);
             }
-        }
-
-        private void AssociatedObject_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            isDraging = false;
-        }
-
-        private void AssociatedObject_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            isDraging = true;
+            else if (PressedPoint != new Point(0, 0))
+            {
+                PressedPoint = new Point(0, 0);
+            }
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
             AssociatedObject.MouseMove -= AssociatedObject_MouseMove;
-            AssociatedObject.MouseLeftButtonUp -= AssociatedObject_MouseLeftButtonUp;
-            AssociatedObject.MouseLeftButtonDown -= AssociatedObject_MouseLeftButtonDown;
         }
     }
 }
