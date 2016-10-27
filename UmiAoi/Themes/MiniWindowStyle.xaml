@@ -10,9 +10,9 @@
                 <ibehavior:Interaction.Behaviors>
                     <uabehavior:DragBehavior/>
                 </ibehavior:Interaction.Behaviors>
-                <Grid x:Name="grid">
+                <Grid x:Name="grid" Margin="{TemplateBinding Padding}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid>
@@ -37,6 +37,8 @@
                 <Setter Property="Visibility" Value="Visible" TargetName="maxmizeButton"/>
                 <Setter Property="Width" Value="100" TargetName="border"/>
                 <Setter Property="Height" Value="40" TargetName="border"/>
+                <Setter Property="BorderBrush" Value="Transparent" TargetName="border"/>
+                <Setter Property="BorderThickness" Value="0" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

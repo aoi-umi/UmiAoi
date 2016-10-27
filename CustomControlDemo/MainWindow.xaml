@@ -10,7 +10,7 @@
     <TabControl>
         <TabItem Header="MiniWindow">
             <UniformGrid Name="uniform" Rows="2" Columns="2">
-                <ua:MiniWindow Name="miniWindow" BorderBrush="Black" BorderThickness="5" Height="120" Width="200">
+                <ua:MiniWindow Name="miniWindow" BorderBrush="Black" BorderThickness="10" Background="AliceBlue" Padding="1">
                     <DockPanel>
                         <Button Content="button1" Click="Button_Click"/>
                         <Button Content="button2" Click="Button_Click"/>
@@ -23,7 +23,7 @@
         <TabItem Header="CustomComboBox">
             <UniformGrid>
                 <!-- 通过ComboBoxPlacement,HorizontalContentAlignment,VerticalContentAlignment改变ComboBox的位置,显示方式,改变SelectedIndex来改变显示内容-->
-                <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
+                <ua:MyComboBox IsEditable="True" SelectedIndex="1" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
                     <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
                     <ua:MyComboBoxItem Header="bb2">
                         <Button>ccc</Button>
@@ -58,7 +58,7 @@
                         <DockPanel Background="AliceBlue">
                             <Button DockPanel.Dock="Top">aaaaaaa</Button>
                             <Button>aaaaaaa</Button>
-                            <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
+                            <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"/>
                         </DockPanel>
                     </ua:MyComboBoxItem>
                 </ua:MyComboBox>
@@ -77,6 +77,13 @@
                 </ua:MyComboBox>
             </UniformGrid>
         </TabItem>
+        <TabItem Header="TreeView">
+            <TreeView BorderBrush="Black" BorderThickness="2">
+                <TreeViewItem Header="asd" IsSelected="True" IsExpanded="True">aaa</TreeViewItem>
+                <TreeViewItem Header="bbb">
+                    <TreeViewItem Header="asas">ssss</TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+        </TabItem>
     </TabControl>
-    
 </Window>
