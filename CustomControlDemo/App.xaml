@@ -89,9 +89,8 @@
                                 <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
                             <ItemsPresenter x:Name="ItemsHost" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"/>
-                            <Border x:Name="Mask" Grid.ColumnSpan="3" BorderBrush="Violet" BorderThickness="1" Visibility="Collapsed" IsHitTestVisible="False">
-                                <Rectangle Fill="Violet" Opacity="0.2"/>
-                            </Border>
+                            <Rectangle x:Name="Mask" Grid.ColumnSpan="3" Fill="Violet" Opacity="0.2" Visibility="Collapsed" IsHitTestVisible="False"/>
+                            <Border x:Name="MaskBorder" Grid.ColumnSpan="3" BorderBrush="Violet" BorderThickness="1" Visibility="Collapsed" IsHitTestVisible="False"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsExpanded" Value="false">
@@ -102,13 +101,13 @@
                             </Trigger>
                             <Trigger Property="IsSelected" Value="true">
                                 <Setter Property="Visibility" Value="Visible" TargetName="Mask"/>
+                                <Setter Property="Visibility" Value="Visible" TargetName="MaskBorder"/>
                                 <!--<Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>-->
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
                                 <Setter Property="Visibility" Value="Visible" TargetName="Mask"/>
-                                <Setter Property="BorderThickness" Value="0" TargetName="Mask"/>
-                                <Setter Property="Opacity" Value="0.8" TargetName="Mask"/>
+                                <Setter Property="Opacity" Value="0.16" TargetName="Mask"/>
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>

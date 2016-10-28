@@ -10,7 +10,7 @@
     <TabControl>
         <TabItem Header="MiniWindow">
             <UniformGrid Name="uniform" Rows="2" Columns="2">
-                <ua:MiniWindow Name="miniWindow" BorderBrush="Black" BorderThickness="10" Background="AliceBlue" Padding="1">
+                <ua:MiniWindow Name="miniWindow" BorderBrush="Black" BorderThickness="1" Background="AliceBlue" Padding="0">
                     <DockPanel>
                         <Button Content="button1" Click="Button_Click"/>
                         <Button Content="button2" Click="Button_Click"/>
