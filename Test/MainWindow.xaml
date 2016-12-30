@@ -11,184 +11,236 @@
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/UmiAoi;component/Themes/Generic.xaml"/>
     </Window.Resources>
-    <UniformGrid Name="g" Columns="4">
-        <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
-        <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
-            <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="bb2">
-                <Button>ccc</Button>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
-                <DockPanel Background="AliceBlue">
-                    <Button DockPanel.Dock="Top">aaaaaaa</Button>
-                    <Button>aaaaaaa</Button>
-                    <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-        <ua:MyComboBox Name="mcb" SelectedIndex="0" VerticalContentAlignment="Stretch" ComboBoxPlacement="Top">
-            <ua:MyComboBoxItem Header="aaasss">
+    <TabControl>
+        <TabItem Header="test">
+            <UniformGrid Name="g" Columns="4">
+                <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="100" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
+                <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
+                    <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="bb2">
+                        <Button>ccc</Button>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="cccccc" HorizontalContentAlignment="Stretch">
+                        <DockPanel Background="AliceBlue">
+                            <Button DockPanel.Dock="Top">aaaaaaa</Button>
+                            <Button>aaaaaaa</Button>
+                            <Button Content="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ua:MyComboBoxItem},AncestorLevel=1}, Path=Header}"></Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
+                <ua:MyComboBox Name="mcb" SelectedIndex="0" VerticalContentAlignment="Stretch" ComboBoxPlacement="Top">
+                    <ua:MyComboBoxItem Header="aaasss">
+                        <DockPanel>
+                            <Button>adssdfd</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                    <ua:MyComboBoxItem Header="ppp">
+                        <DockPanel>
+                            <Button>dfafj</Button>
+                            <Button>dfafj</Button>
+                        </DockPanel>
+                    </ua:MyComboBoxItem>
+                </ua:MyComboBox>
                 <DockPanel>
-                    <Button>adssdfd</Button>
+                    <ComboBox>
+                        <ComboBoxItem>aaa</ComboBoxItem>
+                    </ComboBox>
                 </DockPanel>
-            </ua:MyComboBoxItem>
-            <ua:MyComboBoxItem Header="ppp">
-                <DockPanel>
-                    <Button>dfafj</Button>
-                    <Button>dfafj</Button>
-                </DockPanel>
-            </ua:MyComboBoxItem>
-        </ua:MyComboBox>
-        <DockPanel>
-            <ComboBox>
-                <ComboBoxItem>aaa</ComboBoxItem>
-            </ComboBox>
-        </DockPanel>
-        <UniformGrid>
-            <Button Content="Rotation">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:FocusBehavior TransformType="Rotation" From="0" To="360"/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <Button Content="Scale">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:FocusBehavior TransformType="Scale" From="1" To="1.5"/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <Button Content="Skew">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:FocusBehavior TransformType="Skew" From="0" To="10"/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <Button Content="Translate">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:FocusBehavior TransformType="Translate" From="0" To="10"/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-        </UniformGrid>
-        <Canvas>
-            
-            <Button Name="b1" Canvas.Left="30" Canvas.Top="30" Content="drag" Click="Button_Click_1">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:DragBehavior/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <Button Name="b2" Canvas.Left="66" Content="drag" Canvas.Top="10">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:DragBehavior/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <Button Name="b3" Canvas.Top="53" Canvas.Left="30" Content="drag">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:DragBehavior/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-            <ua:SimpleDecorator Canvas.Top="53" Canvas.Left="66">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:DragBehavior/>
-                </ibehavior:Interaction.Behaviors>
-                <Button Name="b4" Content="drag">
-                </Button>
-            </ua:SimpleDecorator>
-            <Button Content="eliiiiiiiiiii" Width="80" Height="80" Style="{StaticResource EllipseButtonStyle}" Canvas.Top="80">
-                <ibehavior:Interaction.Behaviors>
-                    <ua:DragBehavior/>
-                </ibehavior:Interaction.Behaviors>
-            </Button>
-        </Canvas>
-        <Viewport3D>
-            <Viewport3D.Camera>
-                <PerspectiveCamera Position="4 3 2" LookDirection="-4 -3 -2" />
-            </Viewport3D.Camera>
-            <ModelVisual3D>
-                <ModelVisual3D.Content>
-                    <DirectionalLight Direction="-1,-1,-1" />
-                </ModelVisual3D.Content>
-            </ModelVisual3D>
-            <ModelVisual3D>
-                <ModelVisual3D.Content>
-                    <Model3DGroup>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="0 0 0  1 0 0  1 1 0  0 1 0"
+                <UniformGrid>
+                    <Button Content="Rotation">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:FocusBehavior TransformType="Rotation" From="0" To="360"/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <Button Content="Scale">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:FocusBehavior TransformType="Scale" From="1" To="1.5"/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <Button Content="Skew">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:FocusBehavior TransformType="Skew" From="0" To="10"/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <Button Content="Translate">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:FocusBehavior TransformType="Translate" From="0" To="10"/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                </UniformGrid>
+                <Canvas>
+
+                    <Button Name="b1" Canvas.Left="30" Canvas.Top="30" Content="drag" Click="Button_Click_1">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:DragBehavior/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <Button Name="b2" Canvas.Left="66" Content="drag" Canvas.Top="10">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:DragBehavior/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <Button Name="b3" Canvas.Top="53" Canvas.Left="30" Content="drag">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:DragBehavior/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                    <ua:SimpleDecorator Canvas.Top="53" Canvas.Left="66">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:DragBehavior/>
+                        </ibehavior:Interaction.Behaviors>
+                        <Button Name="b4" Content="drag">
+                        </Button>
+                    </ua:SimpleDecorator>
+                    <Button Content="eliiiiiiiiiii" Width="80" Height="80" Style="{StaticResource EllipseButtonStyle}" Canvas.Top="80">
+                        <ibehavior:Interaction.Behaviors>
+                            <ua:DragBehavior/>
+                        </ibehavior:Interaction.Behaviors>
+                    </Button>
+                </Canvas>
+                <Viewport3D>
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera Position="4 3 2" LookDirection="-4 -3 -2" />
+                    </Viewport3D.Camera>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <DirectionalLight Direction="-1,-1,-1" />
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <Model3DGroup>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="0 0 0  1 0 0  1 1 0  0 1 0"
                                         TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Red"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="0 0 0  0 0 1  1 0 1  1 0 0"
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Red"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="0 0 0  0 0 1  1 0 1  1 0 0"
                                             TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Yellow"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="0 1 1  0 0 1  1 0 1  1 1 1"
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Yellow"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="0 1 1  0 0 1  1 0 1  1 1 1"
                                             TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Green"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="0 1 1  1 1 1  1 1 0  0 1 0"
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Green"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="0 1 1  1 1 1  1 1 0  0 1 0"
                                             TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Blue"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="0 1 1  0 0 1  0 0 0  0 1 0"
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Blue"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="0 1 1  0 0 1  0 0 0  0 1 0"
                                             TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Orange"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                        <GeometryModel3D>
-                            <GeometryModel3D.Geometry>
-                                <MeshGeometry3D Positions="1 1 1  1 0 1  1 0 0  1 1 0"
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Orange"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D Positions="1 1 1  1 0 1  1 0 0  1 1 0"
                                             TriangleIndices="0 1 2  0 2 3" />
-                            </GeometryModel3D.Geometry>
-                            <GeometryModel3D.Material>
-                                <DiffuseMaterial>
-                                    <DiffuseMaterial.Brush>
-                                        <SolidColorBrush Color="Purple"/>
-                                    </DiffuseMaterial.Brush>
-                                </DiffuseMaterial>
-                            </GeometryModel3D.Material>
-                        </GeometryModel3D>
-                    </Model3DGroup>
-                </ModelVisual3D.Content>
-            </ModelVisual3D>
-        </Viewport3D>
-    </UniformGrid>
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial>
+                                            <DiffuseMaterial.Brush>
+                                                <SolidColorBrush Color="Purple"/>
+                                            </DiffuseMaterial.Brush>
+                                        </DiffuseMaterial>
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </Model3DGroup>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+                </Viewport3D>
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="PATH">
+            <UniformGrid Columns="2">
+                <Button BorderBrush="White" BorderThickness="10" Padding="10" Height="100" Width="100">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFF4848" Offset="0.0"/>
+                            <GradientStop Color="Red" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Image Stretch="Fill">
+                        <Image.Source>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <GeometryDrawing Geometry="M 0,0 L 1,1 M 1,0 L 0,1" Brush="White">
+                                        <GeometryDrawing.Pen>
+                                            <Pen Brush="White" Thickness="0.3"/>
+                                        </GeometryDrawing.Pen>
+                                    </GeometryDrawing>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </Image.Source>
+                    </Image>
+                </Button>
+                <Grid>
+                    <Path Stroke="Red" StrokeThickness="1"  Data="M 150,10 S 200,80 10,70" />
+                    <Path Stroke="Blue" StrokeThickness="1"  Data="M 150,10 T 200,80 10,70" />
+                    <Path Stroke="Black" StrokeThickness="1"  Data="M 150,10 L 200,80 10,70" />
+                    <Path Stroke="Black" StrokeThickness="1"  Data="M 150,10 Q 200,80 10,70" />
+                    <Path Stroke="Green" StrokeThickness="1" Data="M 150,10 C 200,80 200,70 10,70" />
+                </Grid>
+                <Path Stroke="Black" StrokeThickness="1" Fill="#CCCCFF">
+                    <Path.Data>
+                        <PathGeometry Figures="M 1,80 C 10,300 200,-150 200,80" />
+                    </Path.Data>
+                </Path>
+                <Grid>
+                    <Path Stroke="Black" StrokeThickness="1" Data="M 10,100 L 100,100 100,50 Z M 10,10 100,10 100,40 Z" />
+                    <Path Stroke="Black" Data="M 10,140 C 450,80 70,-20 250,20 H0 v70" />
+                    <Path Stroke="Black" Data="M 100,50 A 50 20 1 1 10,0" />
+                </Grid>
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="1">
+            <Canvas>
+                <Rectangle Width="50" Height="50" Fill="BlueViolet"/>
+                <Path Canvas.Bottom="10" Stroke="Black" StrokeThickness="1" Data="M 0,0 H 1000"/>
+            </Canvas>
+        </TabItem>
+    </TabControl>
 </Window>
