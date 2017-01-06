@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -29,6 +30,7 @@ namespace Test
             string format = "yyMMddmmHHss";
             var x = DateTime.ParseExact("160831151801", format, CultureInfo.InvariantCulture);
             var y = x.ToString(format+"ddd%c");
+            InitAnimate();
         }
 
         UmiAoi.Adorners.ReflectorAdorner ra1;
@@ -122,6 +124,42 @@ namespace Test
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ra1.ShowOrHideReflector();
+        }
+
+        private Storyboard storyboard;
+        private DoubleAnimation doubleAnimationX;
+        private DoubleAnimation doubleAnimationY;
+        private double DurationMilliseconds = 300;
+        //初始化
+        private void InitAnimate()
+        {
+            this.RenderTransformOrigin = new Point(0.5, 0.5);
+            TransformGroup tg = new TransformGroup();
+            this.RenderTransform = tg;
+            ScaleTransform scale = new ScaleTransform();
+            tg.Children.Add(scale);
+            storyboard = new Storyboard() { FillBehavior = FillBehavior.Stop};
+            doubleAnimationX = new DoubleAnimation() { Duration = TimeSpan.FromMilliseconds(DurationMilliseconds), From = 1, To = .5 };
+            doubleAnimationY = new DoubleAnimation() { Duration = TimeSpan.FromMilliseconds(DurationMilliseconds), From = 1, To = .5 };
+
+            Storyboard.SetTarget(doubleAnimationX, this);
+            Storyboard.SetTarget(doubleAnimationY, this);
+            Storyboard.SetTargetProperty(doubleAnimationX, new PropertyPath("RenderTransform.Children[0].ScaleX"));
+            Storyboard.SetTargetProperty(doubleAnimationY, new PropertyPath("RenderTransform.Children[0].ScaleY"));
+            storyboard.Children.Add(doubleAnimationX);
+            storyboard.Children.Add(doubleAnimationY);
+        }
+
+        //触发
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            storyboard.Stop();
+            storyboard.Begin();
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
