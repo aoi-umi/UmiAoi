@@ -7,7 +7,7 @@
         xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"  
         xmlns:ua="http://schemas.UmiAoi.com"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded" WindowStyle="None" AllowsTransparency="True">
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded" >
     <!--<ibehavior:Interaction.Behaviors>
         <ua:FocusBehavior TransformType="Scale" From="1" To=".5"/>
     </ibehavior:Interaction.Behaviors>-->

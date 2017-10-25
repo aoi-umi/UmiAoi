@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -31,6 +32,15 @@ namespace Test
             var x = DateTime.ParseExact("160831151801", format, CultureInfo.InvariantCulture);
             var y = x.ToString(format+"ddd%c");
             InitAnimate();
+
+            var obj = JsonConvert.DeserializeObject<model>(@"{""code"":""123"",""detail"":{""code"":""098""}}");
+            var v = UmiAoi.Helper.GetValue<int>(obj, "detail", "code");
+        }
+
+        public class model
+        {
+            public string code { get; set; }
+            public model detail { get; set; }
         }
 
         UmiAoi.Adorners.ReflectorAdorner ra1;

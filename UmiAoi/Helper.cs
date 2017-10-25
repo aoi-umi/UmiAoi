@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,30 @@ namespace UmiAoi
             if (bindingModel.ElementName != null) binding.ElementName = bindingModel.ElementName;
             binding.Mode = bindingModel.BindingMode;
             bindingModel.BindingElement.SetBinding(bindingModel.Property, binding);
+        }
+
+        public static TValue GetValue<TValue>(Object t, params string[] name) 
+        {
+            TValue value = default(TValue);
+            var obj = t;
+            var nameMsg = "";
+            try
+            {
+                for (var i = 0; i < name.Length; i++)
+                {
+                    nameMsg += "[" + name[i] + "]";
+                    PropertyInfo[] propertyInfo = obj.GetType().GetProperties();
+                    var p = propertyInfo.FirstOrDefault(x => x.Name == name[i]);
+                    obj = p.GetValue(obj, null);
+                }
+                if (obj != null)
+                    value = (TValue)Convert.ChangeType(obj, typeof(TValue));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(nameMsg + ex.Message);
+            }
+            return value;
         }
     }
 
