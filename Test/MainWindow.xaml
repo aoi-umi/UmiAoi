@@ -22,6 +22,7 @@
                     <StackPanel>
                         <ua:MyTextBox Name="mtb" DockPanel.Dock="Top" Height="50" PreviewDrop="mtb_PreviewDrop"></ua:MyTextBox>
                         <Button Click="Button_Click_2">自定义缩小</Button>
+                        <Button Click="Button_Click_3">未捕获错误</Button>
                     </StackPanel>
                     <ua:MyComboBox IsEditable="True" SelectedIndex="2" ComboBoxPlacement="Top" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Bottom">
                         <ua:MyComboBoxItem Header="i1bbb">aaa</ua:MyComboBoxItem>
