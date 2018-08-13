@@ -17,7 +17,7 @@ namespace UmiAoi
             var binding = new Binding();
             if (bindingModel.Source != null) binding.Source = bindingModel.Source;
             if (bindingModel.Path != null) binding.Path = new PropertyPath(bindingModel.Path);
-            if (bindingModel.ElementName != null) binding.ElementName = bindingModel.ElementName;
+            if (bindingModel.ElementName != null) binding.ElementName = bindingModel.ElementName;            
             binding.Mode = bindingModel.BindingMode;
             bindingModel.BindingElement.SetBinding(bindingModel.Property, binding);
         }
